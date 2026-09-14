@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bloom Calculator</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="calculator.css"></head>
+<style>body,button{font-family:'Trebuchet MS',sans-serif}.intro h1,.section-heading h2,.upload h2{font-family:Georgia,serif}</style><body>
+<div class="sparkle sparkle-one">✦</div><div class="sparkle sparkle-two">✧</div>
+<main class="calculator-shell">
+  <section class="intro"><div class="logo">✿</div><p class="kicker">pretty precise</p><h1>Bloom<br><em>calculator</em></h1><p class="tagline">A little space for big ideas.</p><div class="tip">♡ Tip: use your keyboard for quick calculations</div></section>
+  <section class="calculator-card" aria-label="Scientific calculator">
+    <div class="card-top"><span>CALC / 01</span><span class="mode">DEG <button id="angle-mode" type="button" aria-label="Toggle angle mode">◐</button></span></div>
+    <div class="display"><div id="expression" class="expression"></div><output id="result" aria-live="polite">0</output></div>
+    <div class="function-grid"><button data-action="memory-clear">MC</button><button data-action="memory-recall">MR</button><button data-action="memory-add">M+</button><button data-action="memory-subtract">M−</button><button data-value="(" class="soft">(</button><button data-value=")" class="soft">)</button><button data-value="π" class="soft">π</button><button data-value="e" class="soft">e</button><button data-value="sin(" class="soft">sin</button><button data-value="cos(" class="soft">cos</button><button data-value="tan(" class="soft">tan</button><button data-value="log(" class="soft">log</button><button data-value="ln(" class="soft">ln</button><button data-value="√(" class="soft">√</button><button data-value="^" class="soft">xʸ</button><button data-value="!" class="soft">x!</button></div>
+    <div class="keypad"><button data-action="clear" class="clear">AC</button><button data-action="backspace" class="soft">⌫</button><button data-value="%" class="soft">%</button><button data-value="/" class="operator">÷</button><button data-value="7">7</button><button data-value="8">8</button><button data-value="9">9</button><button data-value="*" class="operator">×</button><button data-value="4">4</button><button data-value="5">5</button><button data-value="6">6</button><button data-value="-" class="operator">−</button><button data-value="1">1</button><button data-value="2">2</button><button data-value="3">3</button><button data-value="+" class="operator">+</button><button data-value="0" class="zero">0</button><button data-value=".">.</button><button data-action="equals" class="equals">=</button></div>
+    <p class="keyboard-note">Enter = calculate &nbsp; · &nbsp; Esc = clear</p>
+  </section>
+</main>
+<script src="calculator.js"></script></body></html>
