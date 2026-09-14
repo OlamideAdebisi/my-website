@@ -1,0 +1,23 @@
+-- Run this once in Supabase Dashboard → SQL Editor.
+create table if not exists public.photos (id uuid primary key default gen_random_uuid(), name text not null, file_path text not null unique, created_at timestamptz not null default now(), favorite boolean not null default false);
+alter table public.photos add column if not exists user_id uuid references auth.users(id) default auth.uid();
+alter table public.photos enable row level security;
+drop policy if exists "Public can read photos" on public.photos;
+drop policy if exists "Public can insert photos" on public.photos;
+drop policy if exists "Public can update photos" on public.photos;
+drop policy if exists "Public can delete photos" on public.photos;
+drop policy if exists "Users can read own photos" on public.photos;
+drop policy if exists "Users can insert own photos" on public.photos;
+drop policy if exists "Users can update own photos" on public.photos;
+drop policy if exists "Users can delete own photos" on public.photos;
+create policy "Users can read own photos" on public.photos for select using (auth.uid() = user_id);
+create policy "Users can insert own photos" on public.photos for insert with check (auth.uid() = user_id);
+create policy "Users can update own photos" on public.photos for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
+create policy "Users can delete own photos" on public.photos for delete using (auth.uid() = user_id);
+insert into storage.buckets (id,name,public) values ('photos','photos',true) on conflict (id) do update set public=true;
+drop policy if exists "Public can read photo files" on storage.objects;
+drop policy if exists "Public can upload photo files" on storage.objects;
+drop policy if exists "Public can delete photo files" on storage.objects;
+create policy "Users can read own photo files" on storage.objects for select using (bucket_id='photos' and (storage.foldername(name))[1] = auth.uid()::text);
+create policy "Users can upload own photo files" on storage.objects for insert with check (bucket_id='photos' and (storage.foldername(name))[1] = auth.uid()::text);
+create policy "Users can delete own photo files" on storage.objects for delete using (bucket_id='photos' and (storage.foldername(name))[1] = auth.uid()::text);
