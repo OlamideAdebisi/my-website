@@ -1,0 +1,26 @@
+{
+  "name": "chatgpt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OlamideAdebisi/my-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/OlamideAdebisi/my-website/issues"
+  },
+  "homepage": "https://github.com/OlamideAdebisi/my-website#readme",
+  "devDependencies": {
+    "vite": "^8.3.0"
+  }
+}
